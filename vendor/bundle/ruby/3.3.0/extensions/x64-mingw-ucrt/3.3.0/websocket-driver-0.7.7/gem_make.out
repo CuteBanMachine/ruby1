@@ -1,0 +1,19 @@
+current directory: C:/Proj/ruby1/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.7.7/ext/websocket-driver
+C:/Ruby33-x64/bin/ruby.exe extconf.rb
+creating Makefile
+
+current directory: C:/Proj/ruby1/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.7.7/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20250114-8616-unpse6 sitelibdir\=./.gem.20250114-8616-unpse6 clean
+
+current directory: C:/Proj/ruby1/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.7.7/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20250114-8616-unpse6 sitelibdir\=./.gem.20250114-8616-unpse6
+generating websocket_mask-x64-mingw-ucrt.def
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: C:/Proj/ruby1/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.7.7/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20250114-8616-unpse6 sitelibdir\=./.gem.20250114-8616-unpse6 install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20250114-8616-unpse6
+
+current directory: C:/Proj/ruby1/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.7.7/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20250114-8616-unpse6 sitelibdir\=./.gem.20250114-8616-unpse6 clean

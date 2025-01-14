@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: artemdatabase
+  username: postgres
+  password: artemdb
+  host: localhost
