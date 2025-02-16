@@ -3,5 +3,5 @@ development:
   encoding: utf8
   database: artemdatabase
   username: postgres
-  password: artemdb
+  password: admin
   host: localhost
