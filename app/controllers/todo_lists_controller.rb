@@ -1,50 +1,39 @@
 class TodoListsController < ApplicationController
-  
   skip_before_action :verify_authenticity_token
 
-  before_action :set_todo_list, only: [:show, :update]
-
   def create
-    @todo_list = TodoList.new(todo_list_params)
-    if @todo_list.save
-      render json: @todo_list, status: :created
-    else
-      render json: @todo_list.errors, status: :unprocessable_entity
-    end
+    service = TodoListCommandService.new
+    todo_list = service.create_todo_list(todo_list_params[:user_id], todo_list_params[:name], todo_list_params[:title])
+    render json: todo_list, status: :created
+  end
+
+  def update
+    service = TodoListCommandService.new
+    todo_list = service.update_todo_list(params[:id], todo_list_params[:name], todo_list_params[:title])
+    render json: todo_list
+  end
+
+  def destroy
+    service = TodoListCommandService.new
+    service.delete_todo_list(params[:id])
+    head :no_content
   end
 
   def index
-    todo_lists = TodoList.all
+    service = TodoListQueryService.new
+    todo_lists = service.get_todo_lists(params[:user_id])
     render json: todo_lists
   end
 
   def show
-    todo_list = TodoList.find(params[:id])
+    service = TodoListQueryService.new
+    todo_list = service.get_todo_list(params[:id])
     render json: todo_list
-  rescue ActiveRecord::RecordNotFound
-    render json: { error: "TodoList not found" }, status: :not_found
   end
 
-  def update
-    @todo_list = TodoList.find(params[:id])
-    if @todo_list.update(todo_list_params)
-      render json: @todo_list
-    else
-      render json: @todo_list.errors, status: :unprocessable_entity
-    end
-  rescue ActiveRecord::RecordNotFound
-    render json: { error: "TodoList not found" }, status: :not_found
-  end
-  
   private
 
-  def set_todo_list
-    @todo_list = TodoList.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render json: { error: "Todo_List not found" }, status: :not_found
-  end
-
   def todo_list_params
-    params.require(:todo_list).permit(:name, :user_id, :title)
+    params.require(:todo_list).permit(:user_id, :name, :title)
   end
 end
